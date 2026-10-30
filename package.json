@@ -55,11 +55,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/UDAN/react-responsive-datatable.git"
+    "url": "https://github.com/manishPatel1997/react-responsive-datatable.git"
   },
-  "homepage": "https://github.com/UDAN/react-responsive-datatable#readme",
+  "homepage": "https://react-responsive-datatable.vercel.app/",
   "bugs": {
-    "url": "https://github.com/UDAN/react-responsive-datatable/issues"
+    "url": "https://github.com/manishPatel1997/react-responsive-datatable/issues"
   },
   "keywords": [
     "react",

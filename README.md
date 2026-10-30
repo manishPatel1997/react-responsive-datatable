@@ -11,7 +11,7 @@
 ![License](https://img.shields.io/badge/License-MIT-orange)
 
 <!-- Deploy the demo app (npm run build) to Vercel/Netlify, then swap the URL below. -->
-**▶ [Live Demo](https://your-demo-url.example.com)** · try the responsive collapsing and resize slider before installing.
+**▶ [Live Demo](https://react-responsive-datatable.vercel.app/)** · try the responsive collapsing and resize slider before installing.
 
 ---
 

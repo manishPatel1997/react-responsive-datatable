@@ -358,7 +358,26 @@ export function App() {
             </p>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+            <a
+              href="https://react-responsive-datatable.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                fontSize: 12,
+                fontWeight: 600,
+                padding: '5px 12px',
+                borderRadius: 20,
+                background: '#0284c7',
+                color: '#ffffff',
+                textDecoration: 'none',
+              }}
+            >
+              <span>🔗 Live Demo</span>
+            </a>
             <span
               style={{
                 fontSize: 12,
