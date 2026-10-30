@@ -2,7 +2,7 @@
 
 > The lightest **full-featured** React & Next.js data table — search, sort, pagination, and server-side mode out of the box — with **automatic responsive column collapsing** so dense tables stay readable from 320px mobile to 4K. **Zero dependencies, zero jQuery.**
 
-[![CI](https://github.com/UDAN/react-responsive-datatable/actions/workflows/ci.yml/badge.svg)](https://github.com/UDAN/react-responsive-datatable/actions/workflows/ci.yml)
+[![CI](https://github.com/manishPatel1997/react-responsive-datatable/actions/workflows/ci.yml/badge.svg)](https://github.com/manishPatel1997/react-responsive-datatable/actions/workflows/ci.yml)
 ![React 18 & 19 Ready](https://img.shields.io/badge/React-18%20%26%2019-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Strict-green)
 ![Zero Dependencies](https://img.shields.io/badge/Dependencies-0-success)
