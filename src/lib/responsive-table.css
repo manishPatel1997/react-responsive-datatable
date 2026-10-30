@@ -1,0 +1,516 @@
+/* ==========================================================================
+   Responsive React DataTable Styles
+   Universal Dynamic Design System - Inherits & Adapts to Any Project
+   ========================================================================== */
+
+:root {
+  /* Dynamically inherits standard design tokens (Tailwind, shadcn, CSS vars) with sensible fallbacks */
+  --rdt-primary: var(--primary, #0284c7);
+  --rdt-primary-hover: var(--primary-hover, #0369a1);
+  --rdt-bg: var(--background, #ffffff);
+  --rdt-surface: var(--muted, #f8fafc);
+  --rdt-border: var(--border, #e2e8f0);
+  --rdt-border-subtle: var(--border-subtle, #f1f5f9);
+  --rdt-text: var(--foreground, #1e293b);
+  --rdt-text-muted: var(--muted-foreground, #64748b);
+  --rdt-row-hover: var(--accent, #f1f5f9);
+  --rdt-stripe: var(--stripe, #f8fafc);
+  --rdt-control-bg: var(--rdt-primary, #0284c7);
+  --rdt-control-color: #ffffff;
+  --rdt-control-active-bg: var(--destructive, #ef4444);
+  --rdt-radius: var(--radius, 8px);
+  --rdt-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.rdt-root-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  container-type: inline-size;
+  container-name: rdt;
+  font-family: inherit;
+  color: var(--rdt-text, inherit);
+}
+
+/* Toolbar Header (Search, Page Size, Custom Actions) */
+.rdt-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 0 12px;
+}
+
+.rdt-toolbar-left,
+.rdt-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.rdt-length-menu {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--rdt-text-muted);
+}
+
+.rdt-select {
+  padding: 5px 24px 5px 8px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--rdt-text);
+  background-color: var(--rdt-bg);
+  border: 1px solid var(--rdt-border);
+  border-radius: var(--rdt-radius);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  background-size: 12px;
+}
+
+.rdt-select:focus {
+  outline: 2px solid var(--rdt-primary);
+  outline-offset: 1px;
+}
+
+.rdt-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.rdt-search-icon {
+  position: absolute;
+  left: 9px;
+  color: var(--rdt-text-muted);
+  pointer-events: none;
+}
+
+.rdt-search-input {
+  padding: 6px 10px 6px 30px;
+  font-size: 13px;
+  font-family: inherit;
+  border: 1px solid var(--rdt-border);
+  border-radius: var(--rdt-radius);
+  background: var(--rdt-bg);
+  color: var(--rdt-text);
+  transition: border-color 0.15s, box-shadow 0.15s;
+  min-width: 180px;
+}
+
+.rdt-search-input:focus {
+  outline: none;
+  border-color: var(--rdt-primary);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+/* Main Table Container */
+.rdt-table-wrapper {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden; /* DataTables Responsive eliminates horizontal scrollbars via column collapsing */
+  background: var(--rdt-bg);
+  border: 1px solid var(--rdt-border);
+  border-radius: var(--rdt-radius);
+  box-shadow: var(--rdt-shadow);
+}
+
+.rdt-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+/* Table Head */
+.rdt-thead {
+  background-color: var(--rdt-surface);
+  border-bottom: 2px solid var(--rdt-border);
+}
+
+.rdt-th {
+  padding: 10px 12px;
+  font-weight: 600;
+  color: var(--rdt-text);
+  white-space: nowrap;
+  user-select: none;
+  transition: background-color 0.15s;
+}
+
+.rdt-th:first-child,
+.rdt-td:first-child {
+  padding-left: 18px;
+}
+
+.rdt-th:last-child,
+.rdt-td:last-child {
+  padding-right: 18px;
+}
+
+.rdt-th-sortable {
+  cursor: pointer;
+}
+
+.rdt-th-sortable:hover {
+  background-color: var(--rdt-border-subtle);
+}
+
+.rdt-th-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rdt-resize-handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 7px;
+  height: 100%;
+  cursor: col-resize;
+  user-select: none;
+  touch-action: none;
+}
+
+.rdt-resize-handle::after {
+  content: '';
+  position: absolute;
+  top: 25%;
+  right: 2px;
+  width: 2px;
+  height: 50%;
+  background-color: var(--rdt-border);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.rdt-th:hover .rdt-resize-handle::after,
+.rdt-resize-handle:hover::after {
+  opacity: 1;
+  background-color: var(--rdt-primary);
+}
+
+.rdt-sort-indicator {
+  display: inline-flex;
+  flex-direction: column;
+  opacity: 0.4;
+  transition: opacity 0.15s;
+}
+
+.rdt-sort-indicator.active {
+  opacity: 1;
+  color: var(--rdt-primary);
+}
+
+/* Actions Column Helper */
+.rdt-actions-col {
+  text-align: right;
+  white-space: nowrap;
+  width: 100px;
+  min-width: 100px;
+  box-sizing: border-box;
+}
+
+.rdt-actions-col .rdt-th-inner {
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* Control Column (The iconic DataTables '+' / '-' toggle) */
+.rdt-control-th,
+.rdt-control-td {
+  width: 36px;
+  min-width: 36px;
+  max-width: 36px;
+  text-align: center;
+  padding: 8px 4px;
+}
+
+.rdt-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--rdt-control-bg);
+  color: var(--rdt-control-color);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s, background-color 0.15s;
+  padding: 0;
+  outline: none;
+}
+
+.rdt-expand-btn:hover {
+  transform: scale(1.08);
+}
+
+.rdt-expand-btn.is-expanded {
+  background-color: var(--rdt-control-active-bg);
+}
+
+/* Table Body */
+.rdt-tbody tr.rdt-row {
+  border-bottom: 1px solid var(--rdt-border);
+  transition: background-color 0.12s ease;
+}
+
+.rdt-tbody tr.rdt-row-striped:nth-child(even) {
+  background-color: var(--rdt-stripe);
+}
+
+.rdt-tbody tr.rdt-row-hoverable:hover {
+  background-color: var(--rdt-row-hover);
+}
+
+.rdt-td {
+  padding: 10px 12px;
+  vertical-align: middle;
+}
+
+/* Bordered variant */
+.rdt-bordered .rdt-th,
+.rdt-bordered .rdt-td {
+  border-right: 1px solid var(--rdt-border);
+}
+.rdt-bordered .rdt-th:last-child,
+.rdt-bordered .rdt-td:last-child {
+  border-right: none;
+}
+
+/* Collapsed Child Row (DataTables .dtr-details style) */
+.rdt-child-row {
+  background-color: var(--rdt-surface);
+  border-bottom: 1px solid var(--rdt-border);
+  animation: rdt-slide-down 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes rdt-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rdt-child-cell {
+  padding: 12px 14px;
+}
+
+.rdt-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 14px;
+  list-style: none;
+  background: var(--rdt-bg);
+  border: 1px solid var(--rdt-border);
+  border-radius: var(--rdt-radius);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.rdt-details-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--rdt-border);
+}
+
+.rdt-details-item:last-child {
+  border-bottom: none;
+  padding-bottom: 2px;
+}
+
+.rdt-detail-title {
+  font-weight: 600;
+  min-width: 110px;
+  color: var(--rdt-text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+}
+
+.rdt-detail-data {
+  flex: 1;
+  color: var(--rdt-text);
+  font-size: 13.5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 6px;
+  text-align: right;
+}
+
+/* Table Footer / Pagination Info */
+.rdt-footer-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 4px 4px;
+  font-size: 13px;
+  color: var(--rdt-text-muted);
+}
+
+.rdt-pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rdt-page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 6px;
+  font-size: 12.5px;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--rdt-text);
+  background: var(--rdt-bg);
+  border: 1px solid var(--rdt-border);
+  border-radius: var(--rdt-radius);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.rdt-page-btn:hover:not(:disabled) {
+  border-color: var(--rdt-primary);
+  color: var(--rdt-primary);
+  background: var(--rdt-row-hover);
+}
+
+.rdt-page-btn.active {
+  background: var(--rdt-primary);
+  color: #ffffff;
+  border-color: var(--rdt-primary);
+}
+
+.rdt-page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Empty State */
+.rdt-empty-state {
+  text-align: center;
+  padding: 36px 16px;
+  color: var(--rdt-text-muted);
+}
+
+/* Responsive Indicator Badge */
+.rdt-responsive-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  background-color: var(--rdt-surface);
+  color: var(--rdt-primary);
+  border: 1px solid var(--rdt-border);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Mobile Responsive Optimizations (Container Queries & Media Queries)
+   ========================================================================== */
+
+@container rdt (max-width: 520px) {
+  .rdt-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .rdt-toolbar-left {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .rdt-toolbar-right {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .rdt-search-box {
+    flex: 1;
+  }
+
+  .rdt-search-input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .rdt-footer-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .rdt-detail-title {
+    min-width: 85px;
+    font-size: 11px;
+  }
+
+  .rdt-child-cell {
+    padding: 8px 10px;
+  }
+
+  .rdt-details-list {
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 520px) {
+  .rdt-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .rdt-toolbar-left,
+  .rdt-toolbar-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .rdt-search-box {
+    flex: 1;
+  }
+
+  .rdt-search-input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .rdt-footer-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+}
