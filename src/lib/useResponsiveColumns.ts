@@ -88,6 +88,7 @@ export function useResponsiveColumns<T>({
     });
 
     if (hasUpdates) {
+      // oxlint-disable-next-line react/set-state-in-effect
       setIntrinsicWidths((prev) => ({ ...prev, ...measured }));
     }
   }, [columns, intrinsicWidths]);

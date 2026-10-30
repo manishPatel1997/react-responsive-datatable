@@ -632,7 +632,7 @@ const columns: ResponsiveColumn<User>[] = [
     header: 'Salary',
     priority: 3,
     accessor: 'salary',
-    render: (val) => \`\$\${val.toLocaleString()}\`,
+    render: (val) => \`$$\${val.toLocaleString()}\`,
   },
 ];
 

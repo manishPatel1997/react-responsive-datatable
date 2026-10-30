@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useCallback, useEffect, useId } from 'react';
+import React, { useState, useMemo, useRef, useCallback, useId } from 'react';
 import type { ResponsiveTableProps, ResponsiveColumn, SortState } from './types';
 import { useResponsiveColumns } from './useResponsiveColumns';
 import {
@@ -76,11 +76,12 @@ export function ResponsiveTable<T extends Record<string, any>>({
   // Instant text-field display value, decoupled from the (possibly debounced)
   // committed query used for filtering.
   const [searchInput, setSearchInput] = useState(controlledSearchQuery ?? '');
+  const [prevControlledSearchQuery, setPrevControlledSearchQuery] = useState(controlledSearchQuery);
+  if (controlledSearchQuery !== undefined && controlledSearchQuery !== prevControlledSearchQuery) {
+    setPrevControlledSearchQuery(controlledSearchQuery);
+    setSearchInput(controlledSearchQuery);
+  }
   const debounceRef = useRef<ReturnType<typeof setTimeout>>(undefined);
-  // Keep the field in sync when a controlled query changes externally (URL sync etc.)
-  useEffect(() => {
-    if (controlledSearchQuery !== undefined) setSearchInput(controlledSearchQuery);
-  }, [controlledSearchQuery]);
   // State: per-column pixel widths set via drag-to-resize (id -> width)
   const [colWidths, setColWidths] = useState<Record<string, number>>({});
 
