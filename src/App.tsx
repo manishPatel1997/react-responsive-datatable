@@ -811,8 +811,8 @@ const sortedToCollapse = columns.sort((a, b) => {
 {`// app/users/page.tsx
 'use client';
 
-import { ResponsiveTable, type ResponsiveColumn } from 'react-responsive-datatable';
-import 'react-responsive-datatable/styles.css';
+import { ResponsiveTable, type ResponsiveColumn } from '@manishpatel/react-responsive-datatable';
+import '@manishpatel/react-responsive-datatable/styles.css';
 
 interface User {
   id: string;
@@ -841,7 +841,7 @@ export default function UsersPage() {
               2. How to build and publish as an NPM Package
             </h3>
             <p style={{ fontSize: 14, color: '#475569' }}>
-              To export this library as an npm package (e.g. <code>react-responsive-datatable</code>), run:
+              To export this library as an npm package (e.g. <code>@manishpatel/react-responsive-datatable</code>), run:
             </p>
             <pre
               style={{

@@ -1,5 +1,5 @@
 {
-  "name": "react-responsive-datatable",
+  "name": "@manishpatel/react-responsive-datatable",
   "version": "1.0.0",
   "description": "The lightest full-featured React data table: search, sort, pagination, server-side mode, and automatic responsive column collapsing. Zero dependencies, zero jQuery, renders live React components in every cell.",
   "type": "module",
@@ -81,6 +81,6 @@
     "tailwind",
     "headless"
   ],
-  "author": "UDAN",
+  "author": "Manish Patel",
   "license": "MIT"
 }

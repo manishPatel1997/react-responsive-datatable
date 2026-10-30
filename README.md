@@ -1,4 +1,4 @@
-# ⚡ React Responsive DataTable (`react-responsive-datatable`)
+# ⚡ React Responsive DataTable (`@manishpatel/react-responsive-datatable`)
 
 > The lightest **full-featured** React & Next.js data table — search, sort, pagination, and server-side mode out of the box — with **automatic responsive column collapsing** so dense tables stay readable from 320px mobile to 4K. **Zero dependencies, zero jQuery.**
 
@@ -57,14 +57,14 @@ DataTables' responsive column collapsing (priority → hide → expand into chil
 ### 1. Installation
 
 ```bash
-npm install react-responsive-datatable
+npm install @manishpatel/react-responsive-datatable
 ```
 
 ### 2. Import Component and Styles
 
 ```tsx
-import { ResponsiveTable, type ResponsiveColumn } from 'react-responsive-datatable';
-import 'react-responsive-datatable/styles.css';
+import { ResponsiveTable, type ResponsiveColumn } from '@manishpatel/react-responsive-datatable';
+import '@manishpatel/react-responsive-datatable/styles.css';
 ```
 
 ---
@@ -73,8 +73,8 @@ import 'react-responsive-datatable/styles.css';
 
 ```tsx
 import React, { useState } from 'react';
-import { ResponsiveTable, type ResponsiveColumn } from 'react-responsive-datatable';
-import 'react-responsive-datatable/styles.css';
+import { ResponsiveTable, type ResponsiveColumn } from '@manishpatel/react-responsive-datatable';
+import '@manishpatel/react-responsive-datatable/styles.css';
 
 interface User {
   id: string;
@@ -169,7 +169,7 @@ Sync table state with URL search parameters or connect to a backend API:
 
 ```tsx
 import { useState, useEffect } from 'react';
-import { ResponsiveTable, type SortState } from 'react-responsive-datatable';
+import { ResponsiveTable, type SortState } from '@manishpatel/react-responsive-datatable';
 
 export function ControlledServerTable() {
   const [data, setData] = useState([]);
@@ -263,8 +263,8 @@ Because responsive column measurements use `ResizeObserver` and DOM geometry, si
 // app/users/page.tsx
 'use client';
 
-import { ResponsiveTable, type ResponsiveColumn } from 'react-responsive-datatable';
-import 'react-responsive-datatable/styles.css';
+import { ResponsiveTable, type ResponsiveColumn } from '@manishpatel/react-responsive-datatable';
+import '@manishpatel/react-responsive-datatable/styles.css';
 
 export default function UsersPage() {
   return (
@@ -364,4 +364,4 @@ npm publish --access public
 ---
 
 ## 📄 License
-MIT © UDAN
+MIT © Manish Patel
